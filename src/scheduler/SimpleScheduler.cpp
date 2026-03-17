@@ -14,7 +14,11 @@ bool SimpleScheduler::addTask(ISchedulerTask* task) {
         LOG_WARN(_logger, TAG, "Cannot add task — limit reached or null.");
         return false;
     }
-    _entries[_taskCount++] = {task, 0, true};
+    Entry newEntry;
+    newEntry.task = task;
+    newEntry.lastRunMs = 0;
+    newEntry.active = true;
+    _entries[_taskCount++] = newEntry;
     LOG_INFO(_logger, TAG, task->getName());
     return true;
 }

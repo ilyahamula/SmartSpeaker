@@ -10,7 +10,7 @@ enum class WiFiConnectionStatus : uint8_t {
 };
 
 enum class BluetoothStatus : uint8_t {
-    DISABLED,
+    DISABLED_OFF,
     IDLE,          // Enabled but not paired
     PAIRING,       // In pairing mode
     CONNECTED      // Paired and connected to a device
@@ -25,7 +25,7 @@ struct ConnectivityState {
     int8_t               wifiRSSI         = 0;   // Signal strength in dBm
     String               localIP;
 
-    BluetoothStatus      bluetoothStatus  = BluetoothStatus::DISABLED;
+    BluetoothStatus      bluetoothStatus  = BluetoothStatus::DISABLED_OFF;
     String               bluetoothPairedDevice;
 
     bool isNetworkAvailable() const {
